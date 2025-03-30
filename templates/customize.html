@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block body %}
+<h1>Customize Badges</h1>
+
+<div class="textarea-container">
+  <textarea
+    id="customizedBadges"
+    rows="4"
+    cols="50"
+    placeholder="Customized Badges (URLs will appear here)"
+    disabled
+  ></textarea>
+</div>
+
+<div class="button-container">
+  <button
+    id="copyButton"
+    style="display: none"
+    onclick="copyToClipboard('customizedBadges')"
+  >
+    Copy to Clipboard
+  </button>
+  <button id="clearButton" style="display: none" onclick="clearTextarea()">
+    Clear
+  </button>
+</div>
+
+<div id="popupModal" class="modal">
+  <div class="modal-content">
+    <h3>Content copied to clipboard!</h3>
+    <button id="closeModal">Close</button>
+  </div>
+</div>
+
+<h2>Badges:</h2>
+<div id="badge-container" class="badgeContainer">
+  <table id="badge-table" class="myTable customizeTable">
+    <thead>
+      <tr class="thead">
+        <th>Badge Name</th>
+        <!-- The color columns will be added dynamically -->
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be populated by JavaScript -->
+    </tbody>
+  </table>
+</div>
+
+<script src="{{ url_for('static', filename='js/clearTextarea.js')}}"></script>
+<script src="{{ url_for('static', filename='js/customize.js')}}"></script>
+<script src="{{ url_for('static', filename='js/getCustomBadges.js')}}"></script>
+<script src="{{ url_for('static', filename='js/copyToClipboard.js')}}"></script>
+
+{% endblock %}

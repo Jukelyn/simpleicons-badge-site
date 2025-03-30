@@ -1,0 +1,19 @@
+.badgeContainer {
+    background: #2f2f2f;
+    width: 80%;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 16px;
+    height: 500px;
+    overflow-y: auto;
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.badgeContainer::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
