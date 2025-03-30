@@ -1,0 +1,104 @@
+{% extends 'base.html' %} {% block body %}
+<h1>Markdown Badges</h1>
+<h2>List was updated on: {{ currentTime }}</h2>
+
+<form action="/update_list" method="post">
+  <div class="button-container">
+    <button type="submit">Update list</button>
+  </div>
+</form>
+
+<div class="textarea-container">
+  <textarea
+    id="selectedBadges"
+    rows="4"
+    cols="50"
+    placeholder="Selected Badges (URLs will appear here)"
+    disabled
+  ></textarea>
+</div>
+
+<div class="button-container">
+  <button
+    id="copyButton"
+    style="display: none"
+    onclick="copyToClipboard('selectedBadges')"
+  >
+    Copy to Clipboard
+  </button>
+  <button id="customizeButton" style="display: none">Customize Badges</button>
+</div>
+
+<div id="popupModal" class="modal">
+  <div class="modal-content">
+    <h3>Content copied to clipboard!</h3>
+    <button id="closeModal">Close</button>
+  </div>
+</div>
+
+<h2>All Badges</h2>
+<div class="badgeContainer">
+  <table class="myTable" id="badgeTable">
+    <thead>
+      <tr class="thead">
+        <th>Select</th>
+        <th>Badge</th>
+        <th>Preview</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in data %}
+      <tr
+        data-badge-name="{{ item.badge }}"
+        data-badge-url="{{ item.badgeURL }}"
+      >
+        <td>
+          <label class="container">
+            <input
+              name="selectBadge"
+              type="checkbox"
+              value="{{ item.badge }}"
+            />
+            <div class="checkmark"></div>
+          </label>
+        </td>
+        <td>{{ item.badge }}</td>
+        <td>
+          <img
+            src="{{ item.badgeURL }}"
+            loading="lazy"
+            alt="{{ item.badge }}"
+          />
+        </td>
+        <td>
+          <a href="{{ item.badgeURL }}" target="_blank">{{ item.badgeURL }}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Selected Badges</h2>
+<div class="badgeContainer" id="selectedBadgesContainer">
+  <table class="myTable" id="selectedBadgesTable">
+    <thead>
+      <tr class="thead">
+        <th>Selected</th>
+        <th>Badge</th>
+        <th>Preview</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dynamically updated table rows will be inserted here -->
+    </tbody>
+  </table>
+</div>
+
+<script src="{{ url_for('static', filename='js/checkTextarea.js')}}"></script>
+<script src="{{ url_for('static', filename='js/copyToClipboard.js')}}"></script>
+<script src="{{ url_for('static', filename='js/getBadges.js')}}"></script>
+
+{% endblock %}
