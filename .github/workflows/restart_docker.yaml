@@ -29,7 +29,7 @@ jobs:
             -p ${{ secrets.SSH_SERVER_PORT }} \
              ${{ secrets.SSH_USER }}@${{ secrets.SSH_SERVER }} \
                   'cd ${{ secrets.REMOTE_PATH }} && \
-                  docker compose up --build -d markdown_badges_site'
+                  docker compose up --build -d simpleicons_badges_site'
       - name: Clean up SSH private key
         run: |
           rm /tmp/private_key.pem

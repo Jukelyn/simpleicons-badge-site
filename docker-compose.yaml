@@ -1,6 +1,6 @@
 services:
-  markdown_badges_site:
-    container_name: markdown_badges_site
+  simpleicons_badges_site:
+    container_name: simpleicons_badges_site
     build:
       context: .
       dockerfile: Dockerfile
