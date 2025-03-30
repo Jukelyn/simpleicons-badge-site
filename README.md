@@ -1,2 +1,2 @@
-# Markdown Badge Site
-A site to see the markdown badges from [Ileriayo/markdown-badges](https://github.com/Ileriayo/markdown-badges) and get one snippet of the selected choices.
+# Simple Icons Badge Site
+A site to see the markdown badges from [simple-icons/simple-icons](https://github.com/simple-icons/simple-icons) and get one snippet of the selected choices.
